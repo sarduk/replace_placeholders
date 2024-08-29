@@ -11,10 +11,4 @@ php index.php  './prove/prova1.txt' './placeholders/placeholders_entityname1.php
 
 */
 
-require_once('config.php');
-require_once('functions.php');
-
-require_once('cli_input.php');
-
-
-////////// end script //////////
+require_once('replace_placeholders.php');

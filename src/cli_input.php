@@ -34,7 +34,7 @@ $options = getopt('', [
     'help',
 ]);
 
-myPrintOutput('print_r($options)'); 
+//myPrintOutput('print_r($options)'); 
 //myDiePrintOutput(print_r($options));
 
 if(isset($options['help'])){
@@ -46,6 +46,8 @@ if(isset($options['help'])){
 $path_input = @$argv[1];
 $path_file_placeholders = @$argv[2];
 $path_dir_output = @$argv[3];
+
+var_dump($path_input, $path_file_placeholders, $path_dir_output);
 
 /*
 validate input
@@ -59,7 +61,7 @@ if (!is_file($path_file_placeholders)){
 if (!is_dir($path_dir_output)){ 
 	//$real_dir_$path_dir_output = @realpath($path_dir_output);
 	myDiePrintOutputError("argv[3] not is_dir : ".$path_dir_output);
-}	 
+}
 
 //$arr_placeholders
 //require_once($path_file_placeholders);
