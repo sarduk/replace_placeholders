@@ -10,4 +10,4 @@ ARGUMENTS
 	path_dir_output
 
 OPTIONS
-  --help
+  --help  display help page
