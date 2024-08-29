@@ -11,3 +11,52 @@ ARGUMENTS
 
 OPTIONS
   --help  display help page
+
+Example
+
+---
+/path/dir/input/
+
+├── Controllers/
+│       └── {Entityname}Controller.php
+
+file content
+<?php class {Entityname}Controller{}
+
+├── Models/
+│       └── {Entityname}.php
+
+file content
+<?php class {Entityname}{}
+
+---
+
+placeholders.txt
+
+entityname = user
+entitynames = users
+Entityname = User
+Entitynames = Users
+
+---
+
+run script
+
+$ php replace_placeholders.php /path/dir/input/ /path/file/placeholders.txt /path/dir/output/
+
+RESULT
+
+/path/dir/output/
+
+├── Controllers/
+│       └── UserController.php
+
+file content
+<?php class UserController{}
+
+├── Models/
+│       └── User.php
+
+file content
+<?php class User{}
+
