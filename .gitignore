@@ -5,4 +5,3 @@ npm-debug.log
 storage/*.key
 .env
 .phpunit.result.cache
-/dev_tmp/
