@@ -24,7 +24,7 @@ path_dir_output='/tmp/replace_placeholders_output2/'
 rm -r $path_dir_output
 mkdir $path_dir_output
 
-php ${path_prj}/src/replace_placeholders.php $path_input $path_file_placeholders $path_dir_output
+php ${path_prj}/dist/replace_placeholders.phar $path_input $path_file_placeholders $path_dir_output
 
 #check
 
@@ -35,7 +35,6 @@ cat $path_dir_output/CRUD_entes/CRUD_entes_addFiles/app/Http/Controllers/EnteCon
 <?php
 class EnteController extends Controller
 OK!!!
-
 
 /////
 /////
@@ -52,11 +51,12 @@ path_dir_output='/tmp/replace_placeholders_output2/'
 rm -r $path_dir_output
 mkdir $path_dir_output
 
-php ${path_prj}/src/replace_placeholders.php $path_input $path_file_placeholders $path_dir_output
+php ${path_prj}/dist/replace_placeholders.phar $path_input $path_file_placeholders $path_dir_output
 
 #check
 
 ls $path_dir_output
+
 EnteController.php
 OK!!!
 

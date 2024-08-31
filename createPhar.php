@@ -16,30 +16,29 @@ $sourceDirectory = './src';
 #directory in cui salvere il pacchetto phar
 $buildDirectory = './dist';
 
-# Name of our archive.
+# creare oggetto Phar.
+# parametri:
+#     - path del file PHAR da generare;
+#     - optional flag per il RecursiveDirectoryIterator, default FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME,
+#     - optional alias
+
 $phar = new Phar($buildDirectory . '/replace_placeholders.phar');
 
 # Have to do buffering to make things executable.
 # See http://stackoverflow.com/questions/11082337/how-to-make-an-executable-phar
 $phar->startBuffering();
 
-# Default executable.
-$defaultStub = $phar->createDefaultStub($buildDirectory . '/replace_placeholders.php');
-
-# ???
-# $buildDirectory . '/replace_placeholders.phar');
-# $buildDirectory . '/replace_placeholders.php');
-# ???
-
 # Have to do buffering to make things executable.
 # See http://stackoverflow.com/questions/11082337/how-to-make-an-executable-phar
 $phar->startBuffering();
 
-# Default executable.
+# declare Default cli executable entrypoint
 # https://www.phptutorial.info/?phar.setdefaultstub
-$defaultStub = $phar->createDefaultStub($sourceDirectory . '/replace_placeholders.php');
+$defaultStub = $phar->createDefaultStub('replace_placeholders.php');
 
-# Build from the project directory. Assumes that createPhar.php (this file) is in the project root.
+# Build from the project directory.
+# include file contents to the archive
+# Assumes that createPhar.php (this file) is in the project root.
 $phar->buildFromDirectory($sourceDirectory);
 
 # Add the header to enable execution.
