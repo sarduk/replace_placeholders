@@ -17,7 +17,7 @@ class ReplacePlaceholdersRecourseDir
     }
 
 
-    public function run()
+    public function run($f_make_dir, $f_write_file)
     {
 
         //https://www.php.net/manual/en/class.recursivedirectoryiterator.php
@@ -43,24 +43,14 @@ class ReplacePlaceholdersRecourseDir
                     $relPathFilename_target = (string)(new ReplacePlaceholders($relPathFilename_source, $this->arr_placeholders));
                     $fullPathFilename_target = path_join($this->path_dir_output, $relPathFilename_target);
                     $fullPathDir_target = dirname($fullPathFilename_target);;
-                    if(!is_dir($fullPathDir_target)){
-                        if(!mkdir($fullPathDir_target, 0777, true)){
-                            $msg = ("(!)errore! Impossibile creare la directory \$fullPathDir_target: {$fullPathDir_target}");
-                            throw new Exception($msg);
-                        }
-                    }
+
+                    $f_make_dir($fullPathDir_target);
             
                     $text_source = file_get_contents($it->key());
                     $text_target = (string)(new ReplacePlaceholders($text_source, $this->arr_placeholders));
             
-                    //https://www.php.net/manual/en/function.file-put-contents.php
-                    $bytes = file_put_contents($fullPathFilename_target, $text_target);
-                    if (false === $bytes) {
-                        $msg =  "(!)errore, Impossibile scrivere nel file $fullPathFilename_target";
-                        throw new Exception($msg);
-                    }
+                    $f_write_file($fullPathFilename_target, $text_target);
                 }
-            
             }
 
             $it->next();

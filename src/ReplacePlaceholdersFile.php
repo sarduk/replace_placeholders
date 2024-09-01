@@ -31,20 +31,14 @@ class ReplacePlaceholdersFile{
         $this->path_dir_output = $path_dir_output;
     }
 
-    public function run()
+    public function run($f_make_dir, $f_write_file)
     {
-
         $text_source = file_get_contents($this->fullpath_filename_input);
         $text_target = (string)(new ReplacePlaceholders($text_source, $this->arr_placeholders));
         $filename_input = pathinfo($this->fullpath_filename_input)['basename'];
         $filename_target = (string)(new ReplacePlaceholders($filename_input, $this->arr_placeholders));
         $fullpath_filename_target = path_join($this->path_dir_output, $filename_target);
         //die($fullpath_filename_target);
-        //https://www.php.net/manual/en/function.file-put-contents.php
-        $bytes = file_put_contents($fullpath_filename_target, $text_target);
-        if (false === $bytes) {
-            $msg =  "(!)errore, Impossibile scrivere nel file $fullpath_filename_target";
-            throw new Exception($msg);
-        }
+        $f_write_file($fullpath_filename_target, $text_target);
     }
 }
