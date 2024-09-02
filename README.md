@@ -40,7 +40,7 @@ This script is useful for generating customized files or directories based on a 
 
 ---
 /path/dir/input/
-
+```
 ├── Controllers/
 │       └── {Entityname}Controller.php
 
@@ -52,26 +52,30 @@ file content
 
 file content
 <?php class {Entityname}{}
+```
 
 ---
 
 placeholders.txt
 
+```
 entityname = user
 entitynames = users
 Entityname = User
 Entitynames = Users
+```
 
 ---
 
 run script
 
-$ php replace_placeholders.php /path/dir/input/ /path/file/placeholders.txt /path/dir/output/
+$ php replace_placeholders.phar /path/dir/input/ /path/file/placeholders.txt /path/dir/output/
 
 RESULT
 
 /path/dir/output/
 
+```
 ├── Controllers/
 │       └── UserController.php
 
@@ -83,4 +87,5 @@ file content
 
 file content
 <?php class User{}
+```
 
