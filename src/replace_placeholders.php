@@ -5,6 +5,9 @@
 
 file entrypoint
 
+@author: Rea Biagio
+@author_email: biagiodevel@gmail.com
+
 */
 
 require_once('config.php');

@@ -1,5 +1,12 @@
 <?php
 
+/*
+
+@author: Rea Biagio
+@author_email: biagiodevel@gmail.com
+
+*/
+
 require_once('ReplacePlaceholders.php');
 
 class ReplacePlaceholdersRecourseDir

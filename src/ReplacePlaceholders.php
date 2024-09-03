@@ -3,8 +3,7 @@
 /*
 
 class ReplacePlaceholders
-classe copiata da 
-https://stackoverflow.com/questions/10106052/replace-multiple-placeholders-with-php
+@source: https://stackoverflow.com/questions/10106052/replace-multiple-placeholders-with-php
 Replace multiple placeholders with PHP?
 ANSWER  answered Apr 11 '12 at 12:40 by hakre
 la classe prende in input una stringa che contiene il path del file 
