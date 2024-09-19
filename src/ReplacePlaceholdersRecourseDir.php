@@ -24,7 +24,7 @@ class ReplacePlaceholdersRecourseDir
     }
 
 
-    public function run($f_make_dir, $f_write_file)
+    public function run($fcb_make_dir, $fcb_write_file)
     {
 
         //https://www.php.net/manual/en/class.recursivedirectoryiterator.php
@@ -51,12 +51,12 @@ class ReplacePlaceholdersRecourseDir
                     $fullPathFilename_target = path_join($this->path_dir_output, $relPathFilename_target);
                     $fullPathDir_target = dirname($fullPathFilename_target);;
 
-                    $f_make_dir($fullPathDir_target);
+                    $fcb_make_dir($fullPathDir_target);
             
                     $text_source = file_get_contents($it->key());
                     $text_target = (string)(new ReplacePlaceholders($text_source, $this->arr_placeholders));
             
-                    $f_write_file($fullPathFilename_target, $text_target);
+                    $fcb_write_file($fullPathFilename_target, $text_target);
                 }
             }
 

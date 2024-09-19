@@ -2,11 +2,15 @@ replace_placeholders
 A script that replaces placeholders in file and directory templates with specified values and outputs the customized version. newline prova
 
 Signature
-php replace_placeholders.php [OPTIONS] {path_input} {path_file_placeholders} {path_dir_output}
+php replace_placeholders.php [OPTIONS] {path_input} {arg_placeholders} {path_dir_output}
 
 ARGUMENTS
+
 	path_input
-	path_file_placeholders
+	
+	arg_placeholders
+		arg_placeholders can be either a file .ini ora a string map key1=val1,key2=val2,...
+
 	path_dir_output
 
 OPTIONS

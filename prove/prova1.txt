@@ -19,6 +19,9 @@ prova ReplacePlaceholdersRecourseDir
 path_prj='/media/ubiagio/Sviluppo/www/reabiagio_scripts/replace_placeholders_recourse/php_prj_2024/replace_placeholders'
 path_input="${path_prj}/prove/templates/crud_master3_formForeachField"
 path_file_placeholders="${path_prj}/prove/placeholders_entityname2.ini"
+map_placeholders="entityname=ente,entitynames=entes,Entityname=Ente,Entitynames=Entes"
+#arg_placeholders=$path_file_placeholders
+arg_placeholders=$map_placeholders
 path_dir_output='/tmp/replace_placeholders_output2/'
 
 rm -r $path_dir_output
@@ -32,6 +35,9 @@ treebr $path_dir_output
 OK!!!
 
 cat $path_dir_output/CRUD_entes/CRUD_entes_addFiles/app/Http/Controllers/EnteController.php
+
+OUTPUT
+
 <?php
 class EnteController extends Controller
 OK!!!

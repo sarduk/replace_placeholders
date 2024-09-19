@@ -118,7 +118,7 @@ function myDiePrintOutputError($msg){
 	exit();
 }
 
-$f_write_file = function(string $fullPathFilename_target, string $text_target){
+$fcb_write_file = function(string $fullPathFilename_target, string $text_target){
     //https://www.php.net/manual/en/function.file-put-contents.php
     $bytes = file_put_contents($fullPathFilename_target, $text_target);
     if (false === $bytes) {
@@ -127,7 +127,7 @@ $f_write_file = function(string $fullPathFilename_target, string $text_target){
     }
 };
 
-$f_make_dir = function(string $fullPathDir_target){
+$fcb_make_dir = function(string $fullPathDir_target){
     if(!is_dir($fullPathDir_target)){
         if(!mkdir($fullPathDir_target, 0777, true)){
             $msg = ("(!)error. Failed to create directory : {$fullPathDir_target}");

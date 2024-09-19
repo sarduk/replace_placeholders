@@ -3,11 +3,15 @@
 A simple script that replaces {placeholders} in file and directory templates with specified values, and outputs the customized version.
 
 # Signature
-php replace_placeholders.phar [OPTIONS] {path_input} {path_file_placeholders} {path_dir_output}
+php replace_placeholders.phar [OPTIONS] {path_input} {arg_placeholders} {path_dir_output}
 
 # ARGUMENTS
+
 	path_input
-	path_file_placeholders
+	
+	arg_placeholders
+		arg_placeholders can be either a file .ini ora a string map key1=val1,key2=val2,...
+
 	path_dir_output
 
 # OPTIONS
@@ -18,7 +22,7 @@ The script takes as input a directory (referred to as "template") or a single fi
 
 **Input:**
 1. **path_input template:** This can be a parent directory or a single file. The files within the directory, or the file itself, may contain placeholders format {placeholder} in both their names and content.
-2. **path_file_placeholders:** A list key-value strings that associates placeholders with the values to replace them. Each element of the array is in the form `<placeholder, replacement_value>`.
+2. **arg_placeholders:** A list key-value strings that associates placeholders with the values to replace them. Each element of the array is in the form `<placeholder, replacement_value>`.
 3. **path_dir_output:** The destination where the modified file or directory should be saved.
 
 **Functionality:**

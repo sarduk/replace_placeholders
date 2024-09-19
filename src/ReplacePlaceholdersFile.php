@@ -1,5 +1,12 @@
 <?php
 
+/*
+
+@author: Rea Biagio
+@author_email: biagiodevel@gmail.com
+
+*/
+
 require_once('ReplacePlaceholders.php');
 
 /*
@@ -31,7 +38,7 @@ class ReplacePlaceholdersFile{
         $this->path_dir_output = $path_dir_output;
     }
 
-    public function run($f_make_dir, $f_write_file)
+    public function run($fcb_make_dir, $fcb_write_file)
     {
         $text_source = file_get_contents($this->fullpath_filename_input);
         $text_target = (string)(new ReplacePlaceholders($text_source, $this->arr_placeholders));
@@ -39,6 +46,6 @@ class ReplacePlaceholdersFile{
         $filename_target = (string)(new ReplacePlaceholders($filename_input, $this->arr_placeholders));
         $fullpath_filename_target = path_join($this->path_dir_output, $filename_target);
         //die($fullpath_filename_target);
-        $f_write_file($fullpath_filename_target, $text_target);
+        $fcb_write_file($fullpath_filename_target, $text_target);
     }
 }
