@@ -32,6 +32,7 @@ array(4) {
 //php index.php  --help
 $options = getopt('', [
     'help',
+    'version',
 ]);
 
 //myPrintOutput('print_r($options)'); 
@@ -39,6 +40,10 @@ $options = getopt('', [
 
 if(isset($options['help'])){
 	myDiePrintOutput(file_get_contents(Config::filename_help));	
+}
+
+if(isset($options['version'])){
+	myDiePrintOutput('replace_placeholders recoursive v 2.0.0');	
 }
 
 //var_dump($argv);
