@@ -1,0 +1,71 @@
+pathprj
+/media/ubiagio/Sviluppo/www/reabiagio_scripts/replace_placeholders_recourse/php_prj_2024/replace_placeholders/ 
+
+////
+
+replace_placeholders.php
+
+ARGUMENTS
+	path_input
+	arg_placeholders
+	path_dir_output
+
+/////
+/////
+/////
+
+#prova ReplacePlaceholdersRecourseDir
+path_prj='/media/ubiagio/Sviluppo/www/reabiagio_scripts/replace_placeholders_recourse/php_prj_2024/replace_placeholders'
+path_input="${path_prj}/prove/templates/source_dir1"
+map_placeholders="fake1=fakeval1"
+#arg_placeholders=$path_file_placeholders
+arg_placeholders=$map_placeholders
+path_dir_output='/tmp/replace_placeholders_output3/'
+
+rm -r $path_dir_output
+mkdir $path_dir_output
+
+php ${path_prj}/src/replace_placeholders.php $path_input $arg_placeholders $path_dir_output
+
+#check
+
+treebr $path_input
+
+treebr $path_dir_output
+
+
+ 
+ubiagio@biagio-lenovo-g50-70:/media/ubiagio/Sviluppo/www/reabiagio_scripts/prj_merge_templates/merge_templates$ treebr $path_input
+/media/ubiagio/Sviluppo/www/reabiagio_scripts/replace_placeholders_recourse/php_prj_2024/replace_placeholders/prove/templates/source_dir1
+├── dir1/
+│   └── dir1_1/
+│       ├── dir1_1_1/
+│       └── dir1_1_2/
+├── dir2/
+│   ├── dir2_1/
+│   └── dir2_2/
+│       └── filez.txt
+└── file1.txt
+
+7 directories, 2 files
+ubiagio@biagio-lenovo-g50-70:/media/ubiagio/Sviluppo/www/reabiagio_scripts/prj_merge_templates/merge_templates$ 
+ubiagio@biagio-lenovo-g50-70:/media/ubiagio/Sviluppo/www/reabiagio_scripts/prj_merge_templates/merge_templates$ treebr $path_dir_output
+/tmp/replace_placeholders_output3/
+├── dir1/
+│   └── dir1_1/
+│       ├── dir1_1_1/
+│       └── dir1_1_2/
+├── dir2/
+│   ├── dir2_1/
+│   └── dir2_2/
+│       └── filez.txt
+└── file1.txt
+
+7 directories, 2 files
+
+OK!!!
+
+/////
+/////
+/////
+

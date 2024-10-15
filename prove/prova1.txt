@@ -16,23 +16,30 @@ ARGUMENTS
 
 prova ReplacePlaceholdersRecourseDir
 
+```bash
 path_prj='/media/ubiagio/Sviluppo/www/reabiagio_scripts/replace_placeholders_recourse/php_prj_2024/replace_placeholders'
 path_input="${path_prj}/prove/templates/crud_master3_formForeachField"
+
 path_file_placeholders="${path_prj}/prove/placeholders_entityname2.ini"
 map_placeholders="entityname=ente,entitynames=entes,Entityname=Ente,Entitynames=Entes"
 #arg_placeholders=$path_file_placeholders
-arg_placeholders=$map_placeholders
+arg_placeholders=$map_placeholders 
+
 path_dir_output='/tmp/replace_placeholders_output2/'
 
 rm -r $path_dir_output
 mkdir $path_dir_output
 
-php ${path_prj}/src/replace_placeholders.php $path_input $path_file_placeholders $path_dir_output
+#run script
+php ${path_prj}/src/replace_placeholders.php $path_input $arg_placeholders $path_dir_output
 
-#check
+#check result
+
+treebr $path_input
 
 treebr $path_dir_output
-OK!!!
+
+#OK!!!
 
 cat $path_dir_output/CRUD_entes/CRUD_entes_addFiles/app/Http/Controllers/EnteController.php
 
@@ -42,25 +49,31 @@ OUTPUT
 class EnteController extends Controller
 OK!!!
 
-
 /////
 /////
 /////
 
 prova ReplacePlaceholdersFile
 
+```bash
 path_prj='/media/ubiagio/Sviluppo/www/reabiagio_scripts/replace_placeholders_recourse/php_prj_2024/replace_placeholders'
 filename_input='{Entityname}Controller.php'
 path_input="${path_prj}/prove/templates/crud_master3_formForeachField/CRUD_{entitynames}/CRUD_{entitynames}_addFiles/app/Http/Controllers/${filename_input}"
+
 path_file_placeholders="${path_prj}/prove/placeholders_entityname2.ini"
+map_placeholders="entityname=ente,entitynames=entes,Entityname=Ente,Entitynames=Entes"
+arg_placeholders=$path_file_placeholders
+#arg_placeholders=$map_placeholders 
+
 path_dir_output='/tmp/replace_placeholders_output2/'
 
 rm -r $path_dir_output
 mkdir $path_dir_output
 
-php ${path_prj}/src/replace_placeholders.php $path_input $path_file_placeholders $path_dir_output
+#run script
+php ${path_prj}/src/replace_placeholders.php $path_input $arg_placeholders $path_dir_output
 
-#check
+#check result
 
 ls $path_dir_output
 EnteController.php

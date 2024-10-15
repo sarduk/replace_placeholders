@@ -23,7 +23,14 @@ class ReplacePlaceholdersRecourseDir
         $this->path_dir_output = $path_dir_output;
     }
 
-
+    
+    /**
+     * run
+     *
+     * @param  function_callback $fcb_make_dir 
+     * @param  function_callback $fcb_write_file
+     * @return void
+     */
     public function run($fcb_make_dir, $fcb_write_file)
     {
 
@@ -31,41 +38,49 @@ class ReplacePlaceholdersRecourseDir
         $recursiveDirectoryIterator = new RecursiveDirectoryIterator($this->path_dir_input);
         //https://www.php.net/manual/en/class.recursiveiteratoriterator.php
         $it = new RecursiveIteratorIterator($recursiveDirectoryIterator);
+        $it = new RecursiveIteratorIterator(
+            $recursiveDirectoryIterator, 
+            RecursiveIteratorIterator::SELF_FIRST // itera sia i file che le directory
+        );
 
         $it->rewind();
 
-        // ??? non prende in considerazione le directory , solo i files ?????
         while($it->valid()) {
             //https://www.php.net/manual/en/directoryiterator.isdot.php
             if (!$it->isDot()) {
 
-                echo 'relPathFilename SubPathName(): ' . $it->getSubPathName() . "\n";
-                echo 'relPathDir SubPath():          ' . $it->getSubPath() . "\n";
-                echo 'fullPathFilename Key():        ' . $it->key() . "\n\n";
+                // echo "\n\n";
+                // echo 'relPath(): ' . $it->getSubPathName() . "\n";
+                // echo 'fullPath, Key():        ' . $it->key() . "\n";
 
-                if(is_file($it->key())){
+                $relPath_source = $it->getSubPathName();
+                $relPath_target = (string)(new ReplacePlaceholders($relPath_source, $this->arr_placeholders));
 
-                    $relPathFilename_source = $it->getSubPathName();
-                    //???
-                    $relPathFilename_target = (string)(new ReplacePlaceholders($relPathFilename_source, $this->arr_placeholders));
-                    $fullPathFilename_target = path_join($this->path_dir_output, $relPathFilename_target);
-                    $fullPathDir_target = dirname($fullPathFilename_target);;
+                $fullPath_target = path_join($this->path_dir_output, $relPath_target);
+                // echo 'fullPath_target:        ' . $fullPath_target . "\n";
 
-                    $fcb_make_dir($fullPathDir_target);
-            
+                if ($it->isDir()) {
+                    $fullPathDir_target = $fullPath_target;
+                } elseif ($it->isFile()) {
+                    $fullPathDir_target = dirname($fullPath_target);
+                }
+
+                // echo 'fullPathDir_target:        ' . $fullPathDir_target . "\n";
+
+                $fcb_make_dir($fullPathDir_target);
+        
+                if ($it->isFile()) {
                     $text_source = file_get_contents($it->key());
                     $text_target = (string)(new ReplacePlaceholders($text_source, $this->arr_placeholders));
-            
-                    $fcb_write_file($fullPathFilename_target, $text_target);
+                    $fcb_write_file($fullPath_target, $text_target);
                 }
+
             }
 
             $it->next();
         }
 
     }
-
-
 
 }
 
