@@ -93,6 +93,17 @@ file content
 <?php class User{}
 ```
 
+---
+
+# Generate .phar 
+
+PHAR archives can be used to distribute PHP applications via a single package.
+
+$ php createPhar.php
+
+file dist/replace_placeholders.phar
+
+---
 
 # Credits
 author: Rea Biagio biagiodevel@gmail.com
