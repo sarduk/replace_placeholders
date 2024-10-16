@@ -11,11 +11,13 @@ ARGUMENTS
 	arg_placeholders
 		arg_placeholders can be either a file .ini ora a string map key1=val1,key2=val2,...
 
-	path_dir_output
+	path_dir_output/
 
 OPTIONS
   --help  display help page
   --version  display version
+
+---
 
 Example
 
